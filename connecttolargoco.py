@@ -19,7 +19,7 @@ st.caption("Thanks to ChatGPT for the image")
 tab_customers, tab_products, tab_employees = st.tabs(["Customers", "Products", "Employees"])
 
 # connect to sql server
-mydb = connect.connect_sql()
+mydb = connect.connect_mysql()
 mycursor = mydb.cursor()
 
 # get revenue data
