@@ -29,8 +29,6 @@ def connect_mysql():
             database="largeco",
         )
         return mydb
-    except mysql.connector.Error as err:
-        raise Exception(f"Error connecting to the database: {err}")
 mycursor = mydb.cursor()
 
 # get revenue data
