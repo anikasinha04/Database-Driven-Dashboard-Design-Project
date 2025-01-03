@@ -31,7 +31,13 @@ def connect_mysql():
         return mydb
     except mysql.connector.Error as err:
         raise Exception(f"Error connecting to the database: {err}")
-mycursor = mydb.cursor()
+
+# Call the connection function and create the cursor
+try:
+    mydb = connect_mysql()
+    mycursor = mydb.cursor()
+except Exception as e:
+    st.error(f"Failed to connect to the database: {e}")
 
 # get revenue data
 query = """
