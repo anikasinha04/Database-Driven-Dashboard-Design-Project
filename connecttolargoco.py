@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
-import mysql.connector as connect
+import mysql.connector
 import pgeocode
 
 # wide view
@@ -19,7 +19,18 @@ st.caption("Thanks to ChatGPT for the image")
 tab_customers, tab_products, tab_employees = st.tabs(["Customers", "Products", "Employees"])
 
 # connect to sql server
-mydb = connect.connect_mysql()
+def connect_mysql():
+    try:
+        mydb = mysql.connector.connect(
+            host="itpmysql.usc.edu",
+            port=3306,
+            user="anikasin",
+            password="5691082656",
+            database="largeco",
+        )
+        return mydb
+    except mysql.connector.Error as err:
+        raise Exception(f"Error connecting to the database: {err}")
 mycursor = mydb.cursor()
 
 # get revenue data
