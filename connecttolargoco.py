@@ -32,10 +32,12 @@ def connect_mysql():
     except mysql.connector.Error as err:
         raise Exception(f"Error connecting to the database: {err}")
 
-# Call the connection function and create the cursor
+# Initialize mydb and mycursor properly
+mydb = None
+mycursor = None
 try:
-    mydb = connect_mysql()
-    mycursor = mydb.cursor()
+    mydb = connect_mysql()  # Connect to the database
+    mycursor = mydb.cursor()  # Create cursor object for executing queries
 except Exception as e:
     st.error(f"Failed to connect to the database: {e}")
 
