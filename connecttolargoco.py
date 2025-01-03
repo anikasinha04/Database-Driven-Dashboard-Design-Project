@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
-import connect
+import mysql.connector as connect
 import pgeocode
 
 # wide view
